@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Stream</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            background-color: #000;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <canvas id="test"></canvas>
+</body>
+<script type="text/javascript">
+    const canvas = document.getElementById('test');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth,
+    canvas.height = window.innerHeight;
+
+    var shadowColor = 'rgba(0, 0, 0, 0.08)', //用于覆盖文字的渐变阴影
+        textColor = "#fff", //文字颜色
+        words = "0123456789qwertyuiopasdfghjklzxcvbnm,./;'\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?", //随机文字
+        wordsArray = words.split(''), //将文字拆分进一个数组
+        fontSize = 18, //字体大小
+        columns = canvas.width / fontSize, //文字降落的列数
+        drops = []; //文字行数
+
+    for (let i = 0; i < columns; i++) {
+        //从第一行开始
+        drops[i] = 1;
+    }
+
+    function drawText() {
+        ctx.save();
+        ctx.fillStyle = textColor;
+        ctx.font = fontSize + "px arial";
+
+        for (let i = 0; i < drops.length; i++) {
+            // 随机取文字
+            var text = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+            // 绘制第n行文字
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            // 差异，数字越小差异越小
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.99) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+        ctx.restore();
+    }
+
+    (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        // 阴影覆盖文字
+        ctx.fillStyle = shadowColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        drawText();
+    }())
+
+</script>
+</html>
