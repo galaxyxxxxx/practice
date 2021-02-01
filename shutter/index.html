@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shutter</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+        }
+        .a{
+            width: 900px;
+            height: 300px;
+            position: relative;
+            top: 200px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+        .b{
+            transition: .7s;
+            overflow: hidden;
+        }
+        .b:hover{
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+        img{
+            width: 400px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="a">
+        <div class="b"><img src="../static/image/cityLife.svg" alt=""></div>
+        <div class="b"><img src="../static/image/happy2021.svg" alt=""></div>
+        <div class="b"><img src="../static/image/locationSearch.svg" alt=""></div>
+        <div class="b"><img src="../static/image/mobileFeed.svg" alt=""></div>
+        <div class="b"><img src="../static/image/nuxtJs.svg" alt=""></div>
+        <div class="b"><img src="../static/image/traveling.svg" alt=""></div>
+        <div class="b"><img src="../static/image/snowGlobe.svg" alt=""></div>
+    </div>
+</body>
+</html>
