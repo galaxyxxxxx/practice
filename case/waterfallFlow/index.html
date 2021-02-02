@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waterfall Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 500px;
+
+            /* column-count: 4;
+            column-gap: 0; */
+        }
+        .item {
+            position: relative;
+            width: 30%;
+            padding: 2px 0;
+            box-sizing: border-box;
+            counter-increment: item-counter;
+            /* padding: 2px;
+            position: relative;
+            counter-increment: item-counter; */
+        }
+        .item img {
+            display: block;
+            width: 100%;
+            /* display: block;
+            width: 100%;
+            height: auto; */
+        }
+        .item::after {
+            position: absolute;
+            display: block;
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            content: counter(item-counter);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="item"><img src="../../static/image/1.jpg" alt=""></div>
+        <div class="item"><img src="../../static/image/2.jpg" alt=""></div>
+        <div class="item"><img src="../../static/image/3.jpg" alt=""></div>
+        <div class="item"><img src="../../static/image/4.jpg" alt=""></div>
+        <div class="item"><img src="../../static/image/5.jpg" alt=""></div>
+        <div class="item"><img src="../../static/image/6.jpg" alt=""></div>
+        <div class="item"><img src="../../static/image/7.jpg" alt=""></div>
+        <div class="item"><img src="../../static/image/8.jpg" alt=""></div>
+        <div class="item"><img src="../../static/image/9.jpg" alt=""></div>
+    </div>
+</body>
+</html>
