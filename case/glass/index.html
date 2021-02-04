@@ -13,22 +13,26 @@
             font-family: Helvetica;
             z-index: 0;
         }
+        h1, h2, h3{
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        h1:hover, h2:hover, h3:hover{
+            opacity: 1;
+        }
         h1 {
             color: #426696;
             font-weight: 600;
             font-size: 3rem;
-            opacity: 0.8;
         }
         h2, p {
             color: #658ec6;
             font-weight: 500;
-            opacity: 0.8;
         }
         h3 {
             color: #426696;
             font-weight: 600;
             font-size: 1rem;
-            opacity: 0.8;
         }
         main {
             font-family: "Poppins", sans-serif;
@@ -145,6 +149,10 @@
             justify-content: space-between;
             background: linear-gradient(to left top, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
             border-radius: 1rem;
+            transition: 0.3s;
+        }
+        .card:hover{
+            transform: scale(1.03)
         }
         .card img{
             width: 150px;
