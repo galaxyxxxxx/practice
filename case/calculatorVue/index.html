@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caculator Vue</title>
+    <title>calculator Vue</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <style>
         body {
@@ -24,7 +24,7 @@
             font-size: 45px;
             color: #666
         }
-        .caculator {
+        .calculator {
 
             --button-width: 80px;
             --button-height: 80px;
@@ -47,7 +47,7 @@
             padding: 0 20px;
             color: #666;
         }
-        .caculator button {
+        .calculator button {
             margin: 8px;
             padding: 0;
             border: 0;
@@ -61,15 +61,15 @@
             background: linear-gradient(135deg, rgba(230, 230, 230, 1) 0%, rgba(246, 246, 246, 1) 100%);
             box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1), 4px 4px 10px -8px rgba(0, 0, 0, .3);
         }
-        .caculator button:active {
+        .calculator button:active {
             box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1) inset, 4px 4px 10px -8px rgba(0, 0, 0, .3) inset;  
             /* 这里的inset直接翻转阴影 真的好妙啊 */
         }
     </style>
 </head>
 <body>
-    <div class="title">Caculator on Vue</div>
-    <div class="caculator">
+    <div class="title">Calculator on Vue</div>
+    <div class="calculator">
         <div class="result">{{ equation }}</div>
         <!-- 八个功能按钮 -->
         <button style="grid-area: ac" @click="clear">AC</button>
@@ -99,7 +99,7 @@
 
     <script type="text/javascript">
     new Vue({
-        el: ".caculator",
+        el: ".calculator",
         data: {
             equation: '0',
             isDecimalAdded: false,
