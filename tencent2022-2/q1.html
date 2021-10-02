@@ -1,84 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
+<html>
+  <head>
+    <title>Q1</title>
     <style>
-        .input {
-            font-size: 14px;
-            line-height: 1.5;
-            border-radius: 4px;
-            width: 200px;
-            margin-left: 5px;
-            border: 1px solid #efeff4;
-            padding: 5px;
-            outline: 0;
-            resize: none;
-        }
-        
-        .content {
-            margin-top: 10px;
-        }
-        
-        .content em {
-            color: #f56c6c;
-        }
+    table{
+        border-collapse: collapse;
+        width: 360px;
+        table-layout: fixed;
+    }
+    thead{
+        background: #f5f7fa;
+    }
+    thead th{
+        font-weight: strong;
+        cursor: pointer;
+    }
+    thead th:hover{
+        color: #25bb9b;
+    }
+    td,th{
+        border: 1px solid #e1e1e1;
+        padding: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
     </style>
+  </head>
+  <body>
+  <div class="container">
+    <table>
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>QQ号码</th>
+              <th>score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>60006</td><td>22</td></tr>
+            <tr><td>2</td><td>20002</td><td>11</td></tr>
+            <tr><td>3</td><td>30003</td><td>66</td></tr>
+            <tr><td>4</td><td>10001</td><td>33</td></tr>
+            <tr><td>5</td><td>50005</td><td>44</td></tr>
+            <tr><td>6</td><td>40004</td><td>55</td></tr>
+        </tbody>
+    </table>
+</div>
 
-    <input class="input" type="text" placeholder="请输入需要匹配的关键词" />
-    <div class="content">
-        到头来，<br /> 我们记住的，
-        <br/> 不是敌人的攻击，
-        <br /> 而是朋友的沉默。
-    </div>
-
-    <script type="text/javascript">
-        /**
-         * 通过率75%
-         */
-        const Highlight = {
-            init(param) {
-                const that = this;
-                const input = param.input;
-                const output = param.output;
-                if (!input || !output) return;
-                // TODO: 获取output的html内容
-                const content = output.innerHTML;
-                // TODO: 请为input绑定input事件，回调函数为_input
-                input.addEventListener('input', _input);
-
-                function _input() {
-                    // TODO: 请获取input的值，并去除左右的空白字符
-                    const word = input.value.trim();
-                    console.log(word)
-                    const result = that.mark(content, word);
-                    // TODO: 请将output的html替换为result
-                    output.innerHTML = result;
+<script type="text/javascript">
+const order = {
+    init (param) {
+        const that = this;
+        const table = param.el;
+        if (!table) return;
+        // TODO: 获取tbody节点
+        const tbody = Array.from(document.querySelector('tbody'));
+        // TODO: 获取所有th节点，并将其转为数组
+        const ths = Array.from(document.querySelectorAll('th'));
+        // TODO: 获取所有tr节点，并将其转为数组
+        const trs = Array.from(document.querySelectorAll('tr'));
+        const list = this.getBodyList(trs);
+        ths.forEach((th, index) => {
+            
+            // TODO: 请为th绑定点击事件
+            th[index]('click', () => {
+                // TODO: 判断当前数据是否为升序
+                console.log('click')
+                const isAsc = isAsc(list, index);
+                // TODO: 如果当前为升序，则将list降序排序；如果当前为降序，则将list升序排序；
+                
+                list.sort((a, b) => isAsc ? a.value[index] - b.value[index] : b.value[index] - a.value[index]);
+                // TODO: 将排序后的list重新插入tbody中
+                // ! 以下三行由小墨提醒后写出
+                for(let i = 0; i < trs.length; i++) {
+                  for(let j = 0; j < 3; j++) {
+                    trs[i].children[j].innerText = list[i].value[j]
+                  }
                 }
-            },
-            mark(content, word) {
-                word = (word || '').trim();
-                if (!word) return content;
-                // TODO: 请将content中和word匹配的全部内容用em标签包裹，比如： <em>word</em>，注意不要处理content中的标签字符
-                let arr = content.split(word)
-                if (arr.length == 1) return '';
-                let res = arr.join('<em>' + word + '</em>');
-                return res;
+            });
+        });
+    },
+    getBodyList (trs) {
+        return trs.map(tr => {
+            // TODO: 获取tr的所有td节点，并将其转为数组
+            const tds = Array.from(tr.querySelectorAll('td'));
+            // TODO: 将td的内容转为数字，��换下面0的值
+            const val = tds.map(td => parseInt(td.innerText));
+            return {tr: tr, value: val};
+        });
+    },
+    isAsc (list, index) {
+        // TODO: 判断list的value中第index个值是否为升序排列
+        for(let i = 2; i < list.length; i++) {
+            if(parseInt(list[i].value[index]) < parseInt(list[i-1].value[index]) {
+               return false;
             }
         }
-        Highlight.init({
-            // TODO: 请获取class=input的节点
-            input: document.querySelector('.input'),
-            // TODO: 请获取class=content的节点
-            output: document.querySelector('.content')
-        });
-    </script>
-</body>
+        return true;
+    }
+};
 
+order.init({
+    // TODO: 请获取class=container下的table的节点
+    el: document.querySelector('table')
+});
+</script>
+  </body>
 </html>
