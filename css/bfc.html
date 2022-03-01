@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BFC</title>
+  <style>
+
+    body{
+      width:100vw;
+      height:100vh;
+      margin: 0;
+    }
+
+    .divider{
+      width: 50vw;
+      height: 1px;
+      background-color:gray;
+    }
+
+    .item{
+      width: 40px;
+      height: 40px;
+      border: 10px solid blue;
+      margin: 20px 10px;
+
+      float: right;
+    }
+
+    .item-float {
+      float: left;
+
+      width: 40px;
+      height: 40px;
+      border: 10px solid blue;
+      margin: 20px 0;
+    }
+
+    .wrapper{
+      width: 80vw;
+      /* height: 45vh; */
+      border: 10px solid green;
+    }
+
+    .wrapper-bfc{
+      width: 80vw;
+      height: 45vh;
+      border: 10px solid orange;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <!-- <div class="item-float"></div> -->
+  </div>
+  <div class="divider"></div>
+  <div class="wrapper-bfc">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item-float"></div>
+  </div>
+</body>
+</html>
